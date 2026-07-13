@@ -1,0 +1,248 @@
+:root{
+  --bg:#f3fefc;
+  --ink:#1B1B18;
+  --ink-soft:#000000;
+  --line:#000000;
+  --card:#f5bb7d;
+  --chip:#F2EFE7;
+  --clove:#8A2E1D;
+  --sage:#4B6B4E;
+  --saffron:#C98A2C;
+  --font-display:'Fraunces', serif;
+  --font-body:'Inter', sans-serif;
+  --font-mono:'JetBrains Mono', monospace;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--saffron); color:#fff;}
+
+/* ---- Header ---- */
+header.top{
+  border-bottom:3px solid var(--line);
+  padding:40px 5vw 40px;
+  display:flex; align-items:center; gap:14px;
+  background-color: #e7ab70;
+}
+.brand{display:flex; align-items:center; gap:12px;}
+.brand .mark{
+  width:60px; height:60px; border-radius:10px;
+  background:var(--ink); color:#fff; font-size:18px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.brand .mark img{
+  width:60px; height:60px;
+  object-fit:cover;
+}
+.brand h1{font-family:var(--font-display); font-weight:600; font-size:30px; letter-spacing:-0.01em;}
+.brand p{font-size:15px; color:var(--ink-soft); font-family:var(--font-mono); margin-top:1px;}
+
+/* ---- Controls ---- */
+.controls{
+  margin:30px 5vw 6px;
+  display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+}
+.search-wrap{flex:1; min-width:240px; position:relative;}
+.search-wrap svg{position:absolute; left:14px; top:50%; transform:translateY(-50%); opacity:.45;}
+.search-wrap input{
+  width:100%; padding:13px 16px 13px 40px; border-radius:25px; border:1px solid var(--line);
+  font-family:var(--font-body); font-size:14px; color:var(--ink);
+}
+.search-wrap input:focus{outline:none; border-color:var(--ink);}
+select{
+  padding:12px 16px; border-radius:10px; border:1px solid var(--line);
+  font-family:var(--font-body); font-size:14px; color:var(--ink); cursor:pointer;
+}
+
+/* Título arriba, categorías abajo, línea completa y fondo como el header*/
+.categorias-section{
+  padding:20px 5vw 10px;
+  border-bottom:3px solid var(--line);
+  background-color:#f3fefc;
+}
+.categorias-section h4{
+  font-family:var(--font-display); font-size:15px; font-weight:600; margin-bottom:12px;
+}
+.pills{
+  display:flex; gap:10px; align-items:center; overflow-x:auto;
+  scrollbar-width:thin;
+  padding-bottom:12px;
+}
+.pill{
+  font-family:var(--font-mono); font-size:12px; white-space:nowrap;
+  padding:8px 14px; border-radius:999px; border:2px solid #6cc8f4;
+  background:var(--card); color:var(--ink-soft); cursor:pointer; transition:all .12s ease;
+  display:flex; align-items:center; gap:6px;
+}
+.pill img{width:16px; height:16px; border-radius:50%; object-fit:cover;}
+.pill.active, .pill:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+/* Count */
+.count{margin:22px 5vw 14px; font-size:13.5px; color:var(--ink-soft); font-family:var(--font-mono);}
+
+/* Grid */
+.grid{
+  margin:0 5vw 60px;
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:22px;
+}
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  cursor:pointer; transition:transform .2s ease, box-shadow .2s ease;
+  display:flex; flex-direction:column;
+}
+.card:hover{transform:translateY(-3px); box-shadow:0 14px 30px -18px rgba(27,27,24,.35);}
+.card-img{position:relative; aspect-ratio:16/11; overflow:hidden; background:var(--chip);}
+.card-img img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transform:scale(1);
+  transition:transform .45s cubic-bezier(.22,.61,.36,1);
+}
+.card:hover .card-img img{transform:scale(1.08);}
+
+.badge{
+  position:absolute; top:12px; right:12px;
+  font-family:var(--font-mono); font-size:10.5px; letter-spacing:.03em; text-transform:uppercase;
+  padding:5px 10px; border-radius:999px; font-weight:500;
+}
+.badge.easy{background:#E7F1E6; color:var(--sage);}
+.badge.mid{background:#FBF0DC; color:var(--saffron);}
+.badge.hard{background:#F7E2DC; color:var(--clove);}
+.card-body{padding:18px 18px 20px; display:flex; flex-direction:column; gap:8px; flex:1; background-color: #F5E6CC;}
+.card-body h3{font-family:var(--font-display); font-size:17px; font-weight:600; line-height:1.2;}
+.cat-tag{
+  font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.03em;
+  background:var(--chip); color:var(--ink-soft); padding:4px 9px; border-radius:6px;
+  width:fit-content;
+}
+.card-meta{display:flex; gap:14px; margin-top:2px;}
+.card-meta span{font-family:var(--font-mono); font-size:11.5px; color:var(--ink-soft); display:flex; align-items:center; gap:5px;}
+
+.empty, .loading{
+  margin:60px 5vw; text-align:center; color:var(--ink-soft); font-family:var(--font-mono); font-size:13.5px;
+}
+
+/* Modal */
+.overlay{
+  position:fixed; inset:0; background:rgba(20,18,14,.55); backdrop-filter:blur(3px);
+  display:none; align-items:flex-start; justify-content:center; z-index:50; padding:40px 20px; overflow-y:auto;
+}
+.overlay.open{display:flex;}
+.modal{
+  background:var(--card); border-radius:20px; max-width:780px; width:100%; overflow:hidden;
+  animation:rise .2s ease;
+}
+@keyframes rise{from{transform:translateY(14px); opacity:0;} to{transform:translateY(0); opacity:1;}}
+.modal-img{position:relative; aspect-ratio:16/7; background:var(--chip);}
+.modal-img img{width:100%; height:100%; object-fit:cover;}
+.modal-close{
+  position:absolute; top:16px; right:16px; width:36px; height:36px; border-radius:50%;
+  background:rgba(255,255,255,.92); border:none; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center;
+}
+.modal-body{padding:28px 32px 34px; background-color: #ffffff;}
+.modal-body h2{font-family:var(--font-display); font-size:26px; font-weight:600; margin-bottom:8px;}
+.modal-section-title{
+  font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--clove); margin:24px 0 12px; display:flex; align-items:center; gap:8px;
+}
+.modal-section-title::before{content:''; width:16px; height:1px; background:var(--clove);}
+.ingredients{list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px 20px;}
+.ingredients li{font-size:14px; display:flex; justify-content:space-between; border-bottom:1px dashed var(--line); padding-bottom:8px;}
+.ingredients li b{font-weight:600;}
+.ingredients li span{color:var(--ink-soft); font-family:var(--font-mono); font-size:12.5px;}
+.instructions{font-size:14.5px; line-height:1.75; color:#3a382f; white-space:pre-line;}
+.modal-links{margin-top:22px; display:flex; gap:12px;}
+.modal-links a{
+  font-family:var(--font-mono); font-size:12.5px; color:var(--clove); text-decoration:none;
+  border-bottom:1px solid var(--clove); padding-bottom:2px;
+}
+/* Pantallas medianas */
+@media (max-width:900px){
+  header.top{
+    flex-wrap:wrap;
+    padding:24px 5vw;
+    gap:16px;
+  }
+  .search-wrap{
+    order:3;
+    flex-basis:100%;
+  }
+  #ordenar{
+    order:2;
+    margin-left:auto;
+  }
+}
+
+/* Configuracion Celular */
+@media (max-width:600px){
+  header.top{
+    flex-direction:column;
+    align-items:stretch;
+    padding:30px 6vw;
+    gap:14px;
+  }
+  .brand{
+    justify-content:center;
+    text-align:center;
+  }
+  .brand .mark{width:60px; height:60px; font-size:20px;}
+  .brand h1{font-size:24px;}
+  .brand p{font-size:12.5px;}
+
+  .search-wrap{order:2; flex-basis:auto; min-width:0;}
+  .search-wrap input{padding:12px 14px 12px 38px; font-size:13.5px;}
+
+  #ordenar{
+    order:3;
+    margin-left:0;
+    width:100%;
+    text-align:center;
+  }
+
+  .categorias-section{padding:16px 6vw 8px;}
+  .categorias-section h4{font-size:13.5px; margin-bottom:10px; text-align:center;}
+  .pills{
+    justify-content:flex-start;
+    padding-bottom:10px;
+  }
+  .pill{font-size:11px; padding:7px 12px;}
+
+  .count{margin:16px 6vw 12px; text-align:center;}
+
+  .grid{
+    margin:0 6vw 40px;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .card-body{padding:14px 16px 16px;}
+  .card-body h3{font-size:16px;}
+  .card-meta{gap:10px; flex-wrap:wrap;}
+
+  .overlay{padding:0;}
+  .modal{
+    max-width:100%;
+    width:100%;
+    min-height:100vh;
+    border-radius:0;
+  }
+  .modal-img{aspect-ratio:16/9;}
+  .modal-body{padding:20px 5vw 30px;}
+  .modal-body h2{font-size:21px;}
+  .ingredients{grid-template-columns:1fr; gap:8px;}
+  .instructions{font-size:14px;}
+  .modal-links{flex-direction:column; gap:10px;}
+}
+
+/* Celular muy pequeño */
+@media (max-width:380px){
+  .brand h1{font-size:40px;}
+  .pill{font-size:10px; padding:6px 10px;}
+}
+
+@media (max-width:760px){
+  .ingredients{grid-template-columns:1fr;}
+}

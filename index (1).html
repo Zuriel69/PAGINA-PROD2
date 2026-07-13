@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RecetasWeb</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <div class="mark"><img src="Logo.jpg" alt="Mundo Receta"></div>
+    <div>
+      <h1>Mundo Receta</h1>
+      <p>Un Mundo de Sabores</p>
+    </div>
+  </div>
+  <div class="search-wrap">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="buscar" placeholder="Buscar recetas, ingredientes, platillos…">
+  </div>
+  <select id="ordenar">
+    <option value="">Ordenar: A-Z</option>
+    <option value="za">Ordenar: Z-A</option>
+  </select>
+</header>
+
+<div class="categorias-section">
+  <h4>Categorias</h4>
+  <div class="pills" id="categorias"></div>
+</div>
+
+<p class="count" id="contador">Cargando recetas…</p>
+
+<div class="grid" id="recetas"></div>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
